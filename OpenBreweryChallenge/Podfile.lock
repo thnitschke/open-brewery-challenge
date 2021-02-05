@@ -1,0 +1,52 @@
+PODS:
+  - Nimble (9.0.0)
+  - Quick (3.0.0)
+  - RxSwift (6.0.0)
+  - SwifterSwift (5.2.0):
+    - SwifterSwift/AppKit (= 5.2.0)
+    - SwifterSwift/CoreAnimation (= 5.2.0)
+    - SwifterSwift/CoreGraphics (= 5.2.0)
+    - SwifterSwift/CoreLocation (= 5.2.0)
+    - SwifterSwift/Dispatch (= 5.2.0)
+    - SwifterSwift/Foundation (= 5.2.0)
+    - SwifterSwift/MapKit (= 5.2.0)
+    - SwifterSwift/SceneKit (= 5.2.0)
+    - SwifterSwift/SpriteKit (= 5.2.0)
+    - SwifterSwift/StoreKit (= 5.2.0)
+    - SwifterSwift/SwiftStdlib (= 5.2.0)
+    - SwifterSwift/UIKit (= 5.2.0)
+  - SwifterSwift/AppKit (5.2.0)
+  - SwifterSwift/CoreAnimation (5.2.0)
+  - SwifterSwift/CoreGraphics (5.2.0)
+  - SwifterSwift/CoreLocation (5.2.0)
+  - SwifterSwift/Dispatch (5.2.0)
+  - SwifterSwift/Foundation (5.2.0)
+  - SwifterSwift/MapKit (5.2.0)
+  - SwifterSwift/SceneKit (5.2.0)
+  - SwifterSwift/SpriteKit (5.2.0)
+  - SwifterSwift/StoreKit (5.2.0)
+  - SwifterSwift/SwiftStdlib (5.2.0)
+  - SwifterSwift/UIKit (5.2.0)
+
+DEPENDENCIES:
+  - Nimble
+  - Quick
+  - RxSwift
+  - SwifterSwift
+
+SPEC REPOS:
+  trunk:
+    - Nimble
+    - Quick
+    - RxSwift
+    - SwifterSwift
+
+SPEC CHECKSUMS:
+  Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
+  Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
+  RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
+  SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
+
+PODFILE CHECKSUM: d75d696776b2f73bf408cee9a43275c1e9577086
+
+COCOAPODS: 1.9.3
