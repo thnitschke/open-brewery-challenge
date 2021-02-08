@@ -1,6 +1,11 @@
 PODS:
   - Nimble (9.0.0)
   - Quick (3.0.0)
+  - RxCocoa (6.0.0):
+    - RxRelay (= 6.0.0)
+    - RxSwift (= 6.0.0)
+  - RxRelay (6.0.0):
+    - RxSwift (= 6.0.0)
   - RxSwift (6.0.0)
   - SwifterSwift (5.2.0):
     - SwifterSwift/AppKit (= 5.2.0)
@@ -27,26 +32,35 @@ PODS:
   - SwifterSwift/StoreKit (5.2.0)
   - SwifterSwift/SwiftStdlib (5.2.0)
   - SwifterSwift/UIKit (5.2.0)
+  - SwiftLint (0.42.0)
 
 DEPENDENCIES:
   - Nimble
   - Quick
+  - RxCocoa
   - RxSwift
   - SwifterSwift
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Nimble
     - Quick
+    - RxCocoa
+    - RxRelay
     - RxSwift
     - SwifterSwift
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
   Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
+  RxCocoa: 3f79328fafa3645b34600f37c31e64c73ae3a80e
+  RxRelay: 8d593be109c06ea850df027351beba614b012ffb
   RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
 
-PODFILE CHECKSUM: d75d696776b2f73bf408cee9a43275c1e9577086
+PODFILE CHECKSUM: baa2f9a635b3bd53b46c025ce3c73a6cab26ebb6
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1

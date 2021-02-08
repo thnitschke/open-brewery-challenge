@@ -1,0 +1,41 @@
+[
+    {
+        "id": 2,
+        "name": "Avondale Brewing Co",
+        "breweryType": "micro",
+        "street": "201 41st St S",
+        "city": "Birmingham",
+        "state": "Alabama",
+        "country": "United States",
+        "longitude": "-86.774322",
+        "latitude": "33.524521",
+        "websiteUrl": "http://www.avondalebrewing.com",
+        "mediumRate": 3.5
+    },
+    {
+        "id": 6,
+        "name": "Nextdoor brewery ltda",
+        "breweryType": "micro",
+        "street": "201 41st St S",
+        "city": "Birmingham",
+        "state": "Alabama",
+        "country": "United States",
+        "longitude": "-86.774322",
+        "latitude": "33.524521",
+        "websiteUrl": "http://www.avondalebrewing.com",
+        "mediumRate": null
+    },
+    {
+        "id": 12,
+        "name": "Heilige INC",
+        "breweryType": "micro",
+        "street": "201 41st St S",
+        "city": "Birmingham",
+        "state": "Alabama",
+        "country": "United States",
+        "longitude": "-86.774322",
+        "latitude": "33.524521",
+        "websiteUrl": "http://www.avondalebrewing.com",
+        "mediumRate": 4.0
+    }
+]
