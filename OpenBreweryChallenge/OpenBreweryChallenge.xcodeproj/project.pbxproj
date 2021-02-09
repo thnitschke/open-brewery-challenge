@@ -26,6 +26,8 @@
 		E4AA135725CDB3340002723F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AA135525CDB3340002723F /* LaunchScreen.storyboard */; };
 		E4AA136225CDB3340002723F /* OpenBreweryChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA136125CDB3340002723F /* OpenBreweryChallengeTests.swift */; };
 		E4AA136D25CDB3350002723F /* OpenBreweryChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA136C25CDB3350002723F /* OpenBreweryChallengeUITests.swift */; };
+		E4F96C6425D2C74D00A1A93D /* BreweryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F96C6325D2C74D00A1A93D /* BreweryCardView.swift */; };
+		E4F96C6925D2FBF300A1A93D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F96C6825D2FBF300A1A93D /* UIImage+Extension.swift */; };
 		F21D222697B3B2F893F4963D /* Pods_OpenBreweryChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC256494C2720D03EE146EDD /* Pods_OpenBreweryChallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		E4AA136825CDB3350002723F /* OpenBreweryChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenBreweryChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AA136C25CDB3350002723F /* OpenBreweryChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBreweryChallengeUITests.swift; sourceTree = "<group>"; };
 		E4AA136E25CDB3350002723F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4F96C6325D2C74D00A1A93D /* BreweryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryCardView.swift; sourceTree = "<group>"; };
+		E4F96C6825D2FBF300A1A93D /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 				1B0DCB8C25D1C220001FB0F2 /* Storyboards */,
 				1B0DCB8225D1C16D001FB0F2 /* ViewCodeConfiguration.swift */,
 				1B0DCB8F25D1C2C7001FB0F2 /* HasCustomView.swift */,
+				E4F96C6825D2FBF300A1A93D /* UIImage+Extension.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				1BB0D2E425D1CF86007E11D8 /* BreweriesListView.swift */,
+				E4F96C6325D2C74D00A1A93D /* BreweryCardView.swift */,
 			);
 			path = ViewCode;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F96C6925D2FBF300A1A93D /* UIImage+Extension.swift in Sources */,
 				1B0DCB9825D1C3FE001FB0F2 /* AppCoordinator.swift in Sources */,
 				1B0DCB8325D1C16D001FB0F2 /* ViewCodeConfiguration.swift in Sources */,
 				E4AA134F25CDB3310002723F /* BreweriesListViewController.swift in Sources */,
@@ -551,6 +558,7 @@
 				E4AA134B25CDB3310002723F /* AppDelegate.swift in Sources */,
 				1BB0D31225D1DBC2007E11D8 /* BreweryViewModel.swift in Sources */,
 				1B0DCB9025D1C2C7001FB0F2 /* HasCustomView.swift in Sources */,
+				E4F96C6425D2C74D00A1A93D /* BreweryCardView.swift in Sources */,
 				1BB0D30D25D1DB46007E11D8 /* UserRating.swift in Sources */,
 				1BB0D31725D1DD4B007E11D8 /* BreweriesListViewModel.swift in Sources */,
 			);

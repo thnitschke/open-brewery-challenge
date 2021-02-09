@@ -24,9 +24,10 @@ class BreweriesListView: UIView, ViewCodeConfiguration {
     }
     
     func configureViews() {
-        backgroundColor = .systemGroupedBackground
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(BreweryCardView.self, forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = .tertiarySystemGroupedBackground
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 92
     }
     
 }

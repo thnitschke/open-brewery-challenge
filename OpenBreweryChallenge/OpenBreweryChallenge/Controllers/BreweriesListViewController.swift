@@ -23,6 +23,8 @@ class BreweriesListViewController: UIViewController, HasCustomView {
         navigationItem.title = "Breweries"
         navigationController?.navigationBar.barTintColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease.circle"), style: .done, target: nil, action: nil)
         
         customView.render()
     }
@@ -40,8 +42,8 @@ class BreweriesListViewController: UIViewController, HasCustomView {
         viewModel.fetchBreweriesViewModels()
         .observe(on: MainScheduler.instance)
             .bind(to:
-                    customView.tableView.rx.items(cellIdentifier: "cell")) { index, viewModel, cell in
-                cell.textLabel?.text = viewModel.name
+                    customView.tableView.rx.items(cellIdentifier: "cell", cellType: BreweryCardView.self)) { index, viewModel, cell in
+                cell.textLabel?.text = "   " + viewModel.name
             }.disposed(by: disposeBag)
     }
 
