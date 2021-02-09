@@ -12,9 +12,16 @@ class BreweryCardView: UITableViewCell, ViewCodeConfiguration {
     
     let colorImage = UIImage(color: .systemYellow, size: CGSize(width: 20, height: 20))
     let card = UIView(frame: .zero)
+    let character = UILabel(frame: .zero)
     var rating: Int = 3 {
         didSet {
             ratingStars.attributedText = generateStarsText(for: rating)
+        }
+    }
+    var mainText = "Brewery name" {
+        didSet {
+            textLabel?.text = "   " + mainText
+            character.text = mainText.first?.uppercased() ?? "B"
         }
     }
     private let ratingStars = UILabel(frame: .zero)
@@ -34,6 +41,8 @@ class BreweryCardView: UITableViewCell, ViewCodeConfiguration {
         contentView.addSubview(ratingStars)
         contentView.addSubview(card)
         contentView.sendSubviewToBack(card)
+        
+        imageView?.addSubview(character)
     }
     
     func setupConstraints() {
@@ -43,12 +52,18 @@ class BreweryCardView: UITableViewCell, ViewCodeConfiguration {
         card.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4.0).isActive = true
         card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4.0).isActive = true
         
-        guard let detailLabel = detailTextLabel else { return }
+        guard let detailLabel = detailTextLabel,
+              let circleImage = imageView
+              else { return }
         ratingStars.translatesAutoresizingMaskIntoConstraints = false
         ratingStars.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: 50).isActive = true
         ratingStars.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -16.0).isActive = true
         ratingStars.topAnchor.constraint(equalTo: detailLabel.topAnchor).isActive = true
         ratingStars.bottomAnchor.constraint(equalTo: detailLabel.bottomAnchor).isActive = true
+        
+        character.translatesAutoresizingMaskIntoConstraints = false
+        character.centerXAnchor.constraint(equalTo: circleImage.centerXAnchor).isActive = true
+        character.centerYAnchor.constraint(equalTo: circleImage.centerYAnchor).isActive = true
     }
     
     func configureViews() {
@@ -69,7 +84,12 @@ class BreweryCardView: UITableViewCell, ViewCodeConfiguration {
         imageView?.clipsToBounds = true
         imageView?.layer.cornerRadius = 20.0
         
-//        selectionStyle = .nones
+        character.text = "B"
+        character.font = UIFont(descriptor: character.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: 22)
+        character.textColor = .label
+        character.alpha = 0.75
+        
+        selectionStyle = .none
     }
 
     override func awakeFromNib() {
