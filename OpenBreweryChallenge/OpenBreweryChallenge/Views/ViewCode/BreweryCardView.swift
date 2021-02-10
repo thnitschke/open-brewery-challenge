@@ -10,12 +10,12 @@ import SwiftUI
 
 class BreweryCardView: UITableViewCell, ViewCodeConfiguration {
     
-    let colorImage = UIImage(color: .systemYellow, size: CGSize(width: 20, height: 20))
+    let colorImage = UIImage(color: .systemYellow, size: CGSize(width: 32, height: 32))
     let card = UIView(frame: .zero)
     let character = UILabel(frame: .zero)
     var rating: Int = 3 {
         didSet {
-            ratingStars.attributedText = generateStarsText(for: rating)
+            ratingStars.attributedText = NSMutableAttributedString.generateStarsText(for: rating)
         }
     }
     var mainText = "Brewery name" {
@@ -25,9 +25,6 @@ class BreweryCardView: UITableViewCell, ViewCodeConfiguration {
         }
     }
     private let ratingStars = UILabel(frame: .zero)
-    
-    private let starSymbol = UIImage(systemName: "star")?.withTintColor(.systemOrange)
-    private let starFillSymbol = UIImage(systemName: "star.fill")?.withTintColor(.systemOrange)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
@@ -67,8 +64,8 @@ class BreweryCardView: UITableViewCell, ViewCodeConfiguration {
     }
     
     func configureViews() {
-        contentView.backgroundColor = .tertiarySystemGroupedBackground
-        card.backgroundColor = .systemBackground
+        contentView.backgroundColor = .systemGroupedBackground
+        card.backgroundColor = .secondarySystemGroupedBackground
         card.layer.cornerRadius = 16.0
         card.clipsToBounds = true
         
@@ -76,20 +73,20 @@ class BreweryCardView: UITableViewCell, ViewCodeConfiguration {
         textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         detailTextLabel?.text = "   Rating"
         detailTextLabel?.font = UIFont.preferredFont(forTextStyle: .body)
-        ratingStars.attributedText = generateStarsText(for: rating)
+        ratingStars.attributedText = NSMutableAttributedString.generateStarsText(for: rating)
         ratingStars.font = UIFont.preferredFont(forTextStyle: .body)
         ratingStars.textAlignment = .right
         
         imageView?.image = colorImage
         imageView?.clipsToBounds = true
-        imageView?.layer.cornerRadius = 20.0
+        imageView?.layer.cornerRadius = colorImage.size.width / 2
         
         character.text = "B"
         character.font = UIFont(descriptor: character.font.fontDescriptor.withSymbolicTraits(.traitBold)!, size: 22)
         character.textColor = .label
         character.alpha = 0.75
         
-        selectionStyle = .none
+        selectionStyle = .gray
     }
 
     override func awakeFromNib() {
@@ -112,25 +109,6 @@ class BreweryCardView: UITableViewCell, ViewCodeConfiguration {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    private func generateStarsText(for number: Int) -> NSMutableAttributedString {
-        
-        let starAttachment = NSTextAttachment()
-        starAttachment.image = starSymbol
-        let starFillAttachment = NSTextAttachment()
-        starFillAttachment.image = starFillSymbol
-        
-        let fullString = NSMutableAttributedString(string: "")
-        for index in 1...5 {
-            if index <= number {
-                fullString.append(NSAttributedString(attachment: starFillAttachment))
-            } else {
-                fullString.append(NSAttributedString(attachment: starAttachment))
-            }
-        }
-        
-        return fullString
     }
 
 }

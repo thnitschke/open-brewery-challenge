@@ -11,6 +11,8 @@ import RxCocoa
 
 class BreweriesListViewController: UIViewController, HasCustomView {
     
+    weak var coordinator: AppCoordinator?
+    
     let disposeBag = DisposeBag()
     private var viewModel: BreweriesListViewModel!
     
@@ -49,9 +51,14 @@ class BreweriesListViewController: UIViewController, HasCustomView {
         viewModel.fetchBreweriesViewModels()
         .observe(on: MainScheduler.instance)
             .bind(to:
-                    customView.tableView.rx.items(cellIdentifier: "cell", cellType: BreweryCardView.self)) { index, viewModel, cell in
+                    customView.tableView.rx.items(cellIdentifier: "cell", cellType: BreweryCardView.self)) { _, viewModel, cell in
                 cell.mainText = viewModel.name
+                cell.rating = viewModel.rating
             }.disposed(by: disposeBag)
+        
+        customView.tableView.rx.modelSelected(BreweryViewModel.self).subscribe(onNext: { [unowned self] item in
+            self.coordinator?.getDetail(for: item)
+        }).disposed(by: disposeBag)
     }
 
 }

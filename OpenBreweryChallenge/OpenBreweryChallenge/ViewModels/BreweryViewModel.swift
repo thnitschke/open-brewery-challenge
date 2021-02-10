@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import SwifterSwift
 
 struct BreweryViewModel {
     private let brewery: Brewery
@@ -14,8 +15,14 @@ struct BreweryViewModel {
     var name: String {
         return brewery.name
     }
-    var rating: String {
-        return "\(brewery.mediumRate ?? 0)"
+    var type: String {
+        return brewery.breweryType
+    }
+    var rating: Int {
+        return brewery.mediumRate?.int ?? 0
+    }
+    var url: String {
+        return brewery.websiteUrl
     }
     var displayAddress: String {
         return """
@@ -23,6 +30,12 @@ struct BreweryViewModel {
             \(brewery.city), \(brewery.state)
             \(brewery.country)
             """
+    }
+    var latitude: String {
+        return brewery.latitude
+    }
+    var longitude: String {
+        return brewery.longitude
     }
     
     init(brewery: Brewery) {
