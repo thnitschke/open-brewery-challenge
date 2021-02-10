@@ -8,7 +8,7 @@
 import Foundation
 
 struct Brewery: Decodable {
-    let id: UInt
+    let id: Int
     let name: String
     let breweryType: String
     let street: String

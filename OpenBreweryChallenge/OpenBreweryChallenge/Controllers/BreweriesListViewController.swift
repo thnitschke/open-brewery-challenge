@@ -32,8 +32,6 @@ class BreweriesListViewController: UIViewController, HasCustomView {
         navigationController?.navigationBar.tintColor = .systemYellow
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.isTranslucent = true
-        extendedLayoutIncludesOpaqueBars = true
-        edgesForExtendedLayout = .all
         
         customView.render()
     }
@@ -49,7 +47,7 @@ class BreweriesListViewController: UIViewController, HasCustomView {
         super.viewDidLoad()
         
         viewModel.fetchBreweriesViewModels()
-        .observe(on: MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .bind(to:
                     customView.tableView.rx.items(cellIdentifier: "cell", cellType: BreweryCardView.self)) { _, viewModel, cell in
                 cell.mainText = viewModel.name
@@ -59,6 +57,19 @@ class BreweriesListViewController: UIViewController, HasCustomView {
         customView.tableView.rx.modelSelected(BreweryViewModel.self).subscribe(onNext: { [unowned self] item in
             self.coordinator?.getDetail(for: item)
         }).disposed(by: disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        customView.tableView.dataSource = nil
+        viewModel.fetchBreweriesViewModels()
+            .observe(on: MainScheduler.instance)
+            .bind(to:
+                    customView.tableView.rx.items(cellIdentifier: "cell", cellType: BreweryCardView.self)) { _, viewModel, cell in
+                cell.mainText = viewModel.name
+                cell.rating = viewModel.rating
+            }.disposed(by: disposeBag)
     }
 
 }

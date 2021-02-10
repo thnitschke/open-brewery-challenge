@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol Coordinator: class {
     var childCoordinators: [Coordinator] { get set }
@@ -34,5 +35,13 @@ class AppCoordinator: Coordinator {
         detailViewController.coordinator = self
         detailViewController.viewModel = brewery
         navigationController.pushViewController(detailViewController, animated: true)
+    }
+    
+    func presentWebview(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        
+        let webviewController = SFSafariViewController(url: url)
+        webviewController.modalPresentationStyle = .pageSheet
+        navigationController.present(webviewController, animated: true)
     }
 }

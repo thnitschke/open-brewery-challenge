@@ -16,7 +16,9 @@ struct BreweryViewModel {
         return brewery.name
     }
     var type: String {
-        return brewery.breweryType
+        var string = brewery.breweryType
+        string.firstCharacterUppercased()
+        return string
     }
     var rating: Int {
         return brewery.mediumRate?.int ?? 0
@@ -36,6 +38,9 @@ struct BreweryViewModel {
     }
     var longitude: String {
         return brewery.longitude
+    }
+    var breweryId: Int {
+        return brewery.id
     }
     
     init(brewery: Brewery) {

@@ -11,6 +11,11 @@ class BreweryDetailViewController: UITableViewController, Storyboarded {
     
     weak var coordinator: AppCoordinator?
     var viewModel: BreweryViewModel?
+    var ratingSelected: Int = 0
+    private let service = BreweriesService()
+    
+    private let actionSheet = UIAlertController(title: "Rate brewery", message: "Please give the brewery a rating:", preferredStyle: .actionSheet)
+    private let alertController = UIAlertController(title: "Email", message: "Please input your email:", preferredStyle: .alert)
     
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -24,6 +29,8 @@ class BreweryDetailViewController: UITableViewController, Storyboarded {
         
         configureNavigationView()
         configureBreweryInformation()
+        configureActionSheet()
+        configureAlertController()
     }
     
     private func configureNavigationView() {
@@ -31,14 +38,12 @@ class BreweryDetailViewController: UITableViewController, Storyboarded {
         let filterSymbol = UIImage(systemName: "star.circle")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: filterSymbol,
                                                             style: .done,
-                                                            target: nil,
-                                                            action: nil)
+                                                            target: self,
+                                                            action: #selector(sendRating))
         navigationController?.navigationBar.barTintColor = .systemBackground
         navigationController?.navigationBar.tintColor = .systemYellow
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.isTranslucent = true
-        extendedLayoutIncludesOpaqueBars = true
-        edgesForExtendedLayout = .all
     }
     
     private func configureBreweryInformation() {
@@ -50,5 +55,64 @@ class BreweryDetailViewController: UITableViewController, Storyboarded {
         addressLabel.text = brewery.displayAddress
         latitudeLabel.text = brewery.latitude
         longitudeLabel.text = brewery.longitude
+    }
+    
+    private func configureActionSheet() {
+        
+        for rating in 1...5 {
+            let actionButton = UIAlertAction(
+                title: "\(rating) star" + (rating > 1 ? "s" : ""),
+                style: .default) { [unowned self] _ in
+                self.ratingSelected = rating
+                debugPrint("Rating selected: \(self.ratingSelected)")
+                
+                self.present(self.alertController, animated: true, completion: nil)
+            }
+            actionSheet.addAction(actionButton)
+        }
+    }
+    
+    private func configureAlertController() {
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { [unowned self] _ in
+            guard let textFields = self.alertController.textFields,
+                  !textFields.isEmpty,
+                  let viewModel = self.viewModel
+                  else {
+                // Could not find textfield
+                return
+            }
+            
+            let field = textFields[0]
+            guard let email = field.text else { return }
+            // store your data
+            UserDefaults.standard.set(email, forKey: "userEmail")
+            UserDefaults.standard.synchronize()
+            
+            self.service.sendRating(breweryId: viewModel.breweryId, value: viewModel.rating, email: email)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Email"
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+    }
+    
+    @objc private func sendRating() {
+        UserDefaults.standard.string(forKey: "userEmail")
+        
+        self.present(self.actionSheet, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath == IndexPath(row: 2, section: 0) {
+            guard let url = urlLabel.text else { return }
+            
+            coordinator?.presentWebview(urlString: url)
+        }
     }
 }

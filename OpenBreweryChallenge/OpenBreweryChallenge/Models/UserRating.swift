@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct UserRating: Codable {
-    let breweryId: UInt
+struct UserRating: Encodable {
+    let breweryId: Int
     let email: String
-    let rate: UInt
+    let rate: Int
 }
